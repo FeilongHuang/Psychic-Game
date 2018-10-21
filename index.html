@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>PSYCHIC-GAME</title>
+</head>
+<body>
+    <h1>The Psychic Game</h1>
+    <p>Guess what letter I'm thinking of</p>
+    <div id="winsdiv">
+        wins:0
+    </div>
+    <div id="loosesdiv">
+        looses:0
+    </div>
+    <div id="guessesLeftdiv">
+        guessesLeft:10
+    </div>
+    <div id="yourGuessesdiv">
+        yourGuesses:
+    </div>
+    <script type="text/javascript">
+    var guessesLeft=10;
+    var wins=0;
+    var looses=0;
+    var computerChoices = "abcdefghijklmnopqrstuvwxyz";
+    var computerGuess = computerChoices.charAt(Math.floor(Math.random() * computerChoices.length));
+var yourGuesses="";    
+var userGuess="";
+document.onkeyup = function(event){
+        guessesLeft--;
+        userGuess = event.key;
+        if(userGuess ===computerGuess){
+         wins++;
+         guessesLeft=10;
+         computerChoices = "abcdefghijklmnopqrstuvwxyz";
+        computerGuess = computerChoices.charAt(Math.floor(Math.random() * computerChoices.length));
+        yourGuesses="";
+        }
+        if(guessesLeft===0){
+        looses++;
+        guessesLeft=10;
+        computerChoices = "abcdefghijklmnopqrstuvwxyz";
+        computerGuess = computerChoices.charAt(Math.floor(Math.random() * computerChoices.length));
+        yourGuesses="";
+        }
+        yourGuesses+=userGuess+",";
+    document.getElementById("winsdiv").innerHTML="wins:"+wins;
+    document.getElementById("loosesdiv").textContent="looses:"+looses;
+    document.getElementById("guessesLeftdiv").textContent="guessesLeft:"+guessesLeft;
+    document.getElementById("yourGuessesdiv").textContent="yourGuesses:"+yourGuesses;
+    }
+    
+    </script>
+</body>
+</html>
